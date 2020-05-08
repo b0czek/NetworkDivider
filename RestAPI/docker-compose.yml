@@ -1,11 +1,10 @@
+
 version: '3.8'
 
 services:
   backend:
-    image: me/backend
-    build:
-      context: backend
+    build: .
     volumes:
-      - ./backend/public:/usr/src/app/public
+      - .:/usr/src/app/
     ports:
       - 3031:3031

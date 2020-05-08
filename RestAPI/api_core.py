@@ -3,7 +3,7 @@ import json
 
 class Divider:
     @staticmethod
-    def __getClosestPowerOfTwo(number, as_hosts, poweroftwo=0):
+    def __getClosestPowerOfTwo(number:int, as_hosts:bool, poweroftwo=0):
         if as_hosts:
             if number + 2 > 2**poweroftwo:
                 return Divider.__getClosestPowerOfTwo(number, as_hosts, poweroftwo+1)
