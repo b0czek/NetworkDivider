@@ -84,7 +84,12 @@
         $("#includecidr").change(function () {
             $("#cidr").prop("disabled", !$(this).prop('checked'))
         });
-        var z;
+        $("#divide_as_hosts").change(function(){
+            $("#divide_as_addresses").prop('checked', !$(this).prop('checked'));
+        });
+        $("#divide_as_addresses").change(function(){
+            $("#divide_as_hosts").prop('checked', !$(this).prop('checked'));
+        });
         function query() {
             $("#dataoutput").addClass('hide');
             $("#dataoutput").children().each(function (index, child) { $(child).remove(); });
@@ -119,7 +124,6 @@
                 url: `https://sieci.kuury.pl/api/divide/network/${ip}/cidr/${cidr}/divide_as_hosts/${divide_as_hosts}/subnets/${subnetworks}`,
                 success: function (response) {
                     var data = JSON.parse(response);
-                    z = data;
                     if (data.error != null) {
                         addErrorCard("Sieć główna", "Błąd", data.error);
                         return;
@@ -131,6 +135,7 @@
                     data.subnets.forEach(subnet => {
                         var suffix = divide_as_hosts ? 'hostów' : 'adresów';
                         var count = divide_as_hosts ? subnet.initial_addresses_count - 2 : subnet.initial_addresses_count;
+                        console.log(count + "     " + subnet.initial_addresses_count);
                         var a = count + " " + suffix;
                         var header = `Sieć ${i}`;
                         if (subnet.error != null) {
