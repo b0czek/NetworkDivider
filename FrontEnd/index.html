@@ -98,6 +98,7 @@
             else if ($("#divide_as_addresses").prop('checked')) {
                 divide_as_hosts = 0;
             }
+            console.log($("#divide_as_hosts").prop('checked') + "  "+ $("#divide_as_addresses").prop('checked'))
             else {
                 addAlert('Nie wybrano sposobu dzielenia sieci', 'Błąd!');
                 return;
@@ -128,9 +129,8 @@
                     var i = 1;
                     data.subnets.forEach(subnet => {
                         var suffix = divide_as_hosts ? 'hostów' : 'adresów';
-                        var count = divide_as_hosts ? subnet.initial_addresses_count -2 : subnet.initial_addresses_count;
+                        var count = divide_as_hosts ? subnet.initial_addresses_count - 2 : subnet.initial_addresses_count;
                         var a = count + " " + suffix;
-                        console.log(a);
                         var header = `Sieć ${i}`;
                         if (subnet.error != null) {
                             addErrorCard(header, a, "Błąd " + subnet.error);
