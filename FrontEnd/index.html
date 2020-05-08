@@ -98,11 +98,12 @@
             else if ($("#divide_as_addresses").prop('checked')) {
                 divide_as_hosts = 0;
             }
-            console.log($("#divide_as_hosts").prop('checked') + "  "+ $("#divide_as_addresses").prop('checked'))
+
             else {
                 addAlert('Nie wybrano sposobu dzielenia sieci', 'Błąd!');
                 return;
             }
+            console.log($("#divide_as_hosts").prop('checked') + "  "+ $("#divide_as_addresses").prop('checked'))
             var subnets = Array();
             $("input#subnetdata").each(function (i, val) {
                 subnets.push($(this).val());
