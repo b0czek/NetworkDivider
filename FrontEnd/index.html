@@ -99,7 +99,6 @@
             }
             else {
                 addAlert('Nie wybrano sposobu dzielenia sieci', 'Błąd!');
-                console.log("rozjebane fest");
                 return;
             }
             var subnets = Array();
@@ -119,14 +118,14 @@
                         addErrorCard("Sieć główna", "Błąd", data.error);
                         return;
                     }
-                    if(includecidr){
-                    addNetworkCard("Sieć główna", data.main_network.initial_ip_address, data.main_network, color="primary");
+                    if (includecidr) {
+                        addNetworkCard("Sieć główna", data.main_network.initial_ip_address, data.main_network, color = "primary");
                     }
-                    for(var i = 0; i < data.subnets.length; i++){
+                    for (var i = 0; i <= data.subnets.length; i++) {
                         subnet = data.subnets[i];
-                        var a = subnet.initial_addresses_count + " " +  divide_as_hosts ? 'hostów' : 'adresów';
-                        var header = `Sieć ${i+1}`;
-                        if(subnet.error != null){
+                        var a = subnet.initial_addresses_count + " " + divide_as_hosts ? 'hostów' : 'adresów';
+                        var header = `Sieć ${i + 1}`;
+                        if (subnet.error != null) {
                             addErrorCard(header, a, "Błąd" + subnet.error);
                         }
                         addNetworkCard(header, a, subnet);
