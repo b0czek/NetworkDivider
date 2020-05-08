@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Dzielnik sieci</title>
+    <style>
+        .html,
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="border col-12 col-md-10 mx-auto mt-3">
+                <p class="text-center my-3 h2"> DZIELNIK SIECI</p>
+                <form>
+                    <div class="input-group mb-3 col-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Adres IP:</span>
+                        </div>
+                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="ipaddress">
+                        <div class="input-group-append">
+                            <span class="input-group-text">/</span>
+                        </div>
+                        <input type="number" max="32" min="0" class="form-control col-2 col-lg-1" id="cidr">
+                    </div>
+                    <span class="h4 ml-3">Sieci dziel na:</span>
+                    <div class="btn-group btn-group-toggle mb-3 mx-1" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                            <input type="radio" id="hosts" autocomplete="off"> Hosty
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" id="address" autocomplete="off"> Adresy
+                        </label>
+                    </div>
+                    <div id="subnets" class="col-8 mx-auto mb-3">
+                        <div class="input-group mb-3" id="subnet1">
+                            <input type="number" class="form-control" aria-describedby="basic-addon1" id="subnetdata1">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-outline-danger">-</button>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-secondary col-12" onclick="addSubnet(event)">+</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addSubnet(event){
+            console.log(event);
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

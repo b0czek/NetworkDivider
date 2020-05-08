@@ -1,8 +1,11 @@
 version: '3.8'
 
 services:
-   api_core:
-     build: .
-     volumes: 
-        - .:/usr/src/app
-
+  backend:
+    image: me/backend
+    build:
+      context: backend
+    volumes:
+      - ./backend/public:/usr/src/app/public
+    ports:
+      - 3031:3031
