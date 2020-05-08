@@ -110,10 +110,13 @@
                 return;
             }
             var subnetworks = subnets.join('/');
+            var z;
+            $("#dataoutput").removeClass("hide");
             $.ajax({
                 url: `http://sieci.kuury.pl/api/divide/network/${ip}/cidr/${cidr}/divide_as_hosts/${divide_as_hosts}/subnets/${subnetworks}`,
                 success: function (response) {
                     var data = JSON.parse(response);
+                    z = data;
                     if (data.error != null) {
                         addErrorCard("Sieć główna", "Błąd", data.error);
                         return;
@@ -133,7 +136,6 @@
                     }
                 }
             });
-            $("#dataoutput").removeClass("hide");
         }
         function addAlert(message, bold = "") {
             $("#datasubmittion").before(`<div class="col-12 col-md-10 alert alert-warning alert-dismissible fade show mx-auto" role="alert"> <span class="alert-message"><b>${bold}</b>&nbsp;${message}</span> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>`);
