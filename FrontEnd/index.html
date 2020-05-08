@@ -125,8 +125,9 @@
                     if (includecidr) {
                         addNetworkCard("Sieć główna", data.main_network.initial_ip_address, data.main_network, color = "primary");
                     }
-                    for (var i = 0; i <= data.subnets.length; i++) {
+                    for (var i = 0; i < data.subnets.length; i++) {
                         subnet = data.subnets[i];
+                        console.log('kurwo glupia pokaz siec 2 bo cie zabije' + i);
                         var a = subnet.initial_addresses_count + " " + divide_as_hosts ? 'hostów' : 'adresów';
                         var header = `Sieć ${i + 1}`;
                         if (subnet.error != null) {
