@@ -84,6 +84,7 @@
         $("#includecidr").change(function () {
             $("#cidr").prop("disabled", !$(this).prop('checked'))
         });
+        var z;
         function query() {
             $("#dataoutput").addClass('hide');
             $("#dataoutput").children().each(function (index, child) { $(child).remove(); });
@@ -110,7 +111,7 @@
                 return;
             }
             var subnetworks = subnets.join('/');
-            var z;
+
             $("#dataoutput").removeClass("hide");
             $.ajax({
                 url: `http://sieci.kuury.pl/api/divide/network/${ip}/cidr/${cidr}/divide_as_hosts/${divide_as_hosts}/subnets/${subnetworks}`,
