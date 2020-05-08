@@ -42,6 +42,7 @@ class Divider:
             x['main_network'] = main_network_parameters
             operating_subnet_address = main_network.network()
             x['subnets'] = list()
+            x['main_network']['initial_ip_address'] = ip
             x['error'] = None
         except ValueError as e:
             x['error'] = str(e)

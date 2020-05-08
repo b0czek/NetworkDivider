@@ -17,4 +17,6 @@ CMD [ "uwsgi", "--socket", "0.0.0.0:3031", \
                "--plugins", "python3", \
                "--protocol", "uwsgi", \
                "--wsgi-file", "run.py", \
-               "--callable", "app" ]
+               "--callable", "app", \
+               "--processes", "4", \
+               "--threads", "2" ]
