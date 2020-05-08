@@ -128,7 +128,8 @@
                     var i = 1;
                     data.subnets.forEach(subnet => {
                         var suffix = divide_as_hosts ? 'hostów' : 'adresów';
-                        var a = subnet.initial_addresses_count + " " + suffix;
+                        var count = divide_as_hosts ? subnet.initial_addresses_count -2 : subnet.initial_addresses_count;
+                        var a = count + " " + suffix;
                         console.log(a);
                         var header = `Sieć ${i}`;
                         if (subnet.error != null) {
