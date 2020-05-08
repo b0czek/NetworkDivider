@@ -131,6 +131,8 @@
                         var header = `Sieć ${i}`;
                         if (subnet.error != null) {
                             addErrorCard(header, a, "Błąd" + subnet.error);
+                            i++;
+                            return;
                         }
                         addNetworkCard(header, a, subnet);
                         i++;
