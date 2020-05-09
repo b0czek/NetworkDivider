@@ -40,7 +40,7 @@
         <div class="row">
             <div class="border rounded col-12 col-md-10 mx-auto mt-3" id="datasubmittion">
                 <img class="d-block mx-auto my-3 col-3" src="favicon.png">
-                <form action="#" onsubmit="query()">
+                <form action="javascript:void(0);" onsubmit="query()">
                     <div class="input-group mb-3 col-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Adres IP:</span>
@@ -78,7 +78,7 @@
                     </div>
                 </form>
             </div>
-            <div class="border rounded col-12 col-md-10 mx-auto mt-3 hide" id="dataoutput">
+            <div class="border rounded col-12 col-md-10 mx-auto my-3 hide" id="dataoutput">
 
             </div>
         </div>
@@ -160,6 +160,7 @@
                         addNetworkCard(header, a, subnet);
                         i++;
                     });
+                scrollToResult();
                 }
             });
         }
@@ -177,7 +178,11 @@
         function addErrorCard(header, title, message) {
             $("#dataoutput").append(`<div class="card border-danger my-2"> <div class="card-header"> ${header} </div> <div class="card-body text-danger"> <h5 class="card-title">${title}</h5> <div class="card-text container"> <div class="row">${message}</div> </div> </div> </div>`);
         }
-
+        function scrollToResult(){
+            $('html,body').animate({
+                scrollTop: $("#dataoutput").offset().top
+            },500);
+        }
     </script>
 
 
