@@ -12,7 +12,7 @@ COPY . .
 RUN rm -rf public/*
 
 RUN pip3 install --no-cache-dir -r requirements.txt
-CMD [ "uwsgi", "--https", "0.0.0.0:3031, /etc/letsencrypt/live/sieci.kuury.pl/fullchain.pem, /etc/letsencrypt/live/sieci.kuury.pl/privkey.pem", \
+CMD [ "uwsgi", "--socket", "0.0.0.0:3031", \
                "--uid", "uwsgi", \
                "--plugins", "python3", \
                "--protocol", "uwsgi", \
