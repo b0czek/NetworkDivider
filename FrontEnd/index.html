@@ -138,7 +138,8 @@
             $.ajax({
                 url: `https://sieci.kuury.pl/api/divide/network/${ip}/cidr/${cidr}/divide_as_hosts/${divide_as_hosts}/subnets/${subnetworks}`,
                 success: function (response) {
-                    var data = JSON.parse(response);
+                        var data = response;
+
                     if (data.error != null) {
                         addErrorCard("Sieć główna", "Błąd", data.error);
                         return;
