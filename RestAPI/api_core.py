@@ -65,5 +65,5 @@ class Divider:
                 x['subnets'].append(params)
 
             except ValueError as e:
-                x['subnets'].append(dict(initial_addresses_count=subnet, error=str(e)))
+                x['subnets'].append(dict(initial_addresses_count=subnet+2 if divide_as_hosts else subnet, error=str(e)))
         return x
