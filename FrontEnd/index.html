@@ -114,7 +114,7 @@
             $("#dataoutput").children().each(function (index, child) { $(child).remove(); });
             var ip = $("#ipaddress").val();
             var includecidr = $("#includecidr").prop("checked");
-            var cidr = includecidr ? $("#cidr").val() : 0;
+            var cidr = includecidr ? $("#cidr").val() : 420;
             var divide_as_hosts;
             if ($("#divide_as_hosts").prop('checked')) {
                 divide_as_hosts = 1;
@@ -147,7 +147,7 @@
                         addErrorCard("Sieć główna", "Błąd", data.error);
                         return;
                     }
-                    if (includecidr) {
+                    else if (includecidr) {
                         addNetworkCard("Sieć główna", data.main_network.initial_ip_address, data.main_network, color = "primary");
                     }
                     var i = 1;
