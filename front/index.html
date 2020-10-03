@@ -106,7 +106,7 @@
 
             $("#dataoutput").removeClass("hide");
             $.ajax({
-                url: `https://sieci.kuury.pl/api/divide/network/${ip}/cidr/${cidr}/divide_as_hosts/${divide_as_hosts}/subnets/${subnetworks}`,
+                url: `${window.location.protocol}//${window.location.host}/api/divide/network/${ip}/cidr/${cidr}/divide_as_hosts/${divide_as_hosts}/subnets/${subnetworks}`,
                 success: function (response) {
                         var data = response;
 
