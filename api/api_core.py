@@ -1,6 +1,7 @@
 import ipcalc
 import json
 import math
+import re
 
 class Divider:
     @staticmethod
@@ -36,6 +37,8 @@ class Divider:
     def divide(ip: str, cidr:int, subnets: list, divide_as_hosts: bool):
         x = dict()
         try:
+            if not re.search("^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$", ip):
+                raise ValueError('Nieprawidowy adres ip')
             if cidr == 420:
                 cidr = Divider.__determineCidr(subnets, divide_as_hosts)
             main_network_parameters, main_network = Divider.__listNetworkParameters(ip,cidr)
