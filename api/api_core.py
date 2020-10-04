@@ -38,7 +38,7 @@ class Divider:
         x = dict()
         try:
             if not re.search("^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$", ip):
-                raise ValueError('Nieprawidowy adres ip')
+                raise ValueError('Nieprawidłowy adres IP')
             if cidr == 420:
                 cidr = Divider.__determineCidr(subnets, divide_as_hosts)
             main_network_parameters, main_network = Divider.__listNetworkParameters(ip,cidr)
