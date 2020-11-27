@@ -1,8 +1,11 @@
 $("#addSubnet").click(() => {
-    $("#addSubnet").before('<div class="input-group mb-3" id="subnet1"><input type="number" class="form-control" aria-describedby="basic-addon1" id="subnetdata"><div class="input-group-append"><button type="button" class="btn btn-outline-danger" id="removeSubnet">-</button></div></div>');
+    $("#addSubnet").before('<div class="input-group mb-3" id="subnet"><input type="number" class="form-control" aria-describedby="basic-addon1" id="subnetdata"><div class="input-group-append"><button type="button" class="btn btn-outline-danger" id="removeSubnet">-</button></div></div>');
 });
 $('#subnets').on('click', '#removeSubnet', function () {
     $(this).closest('div.input-group').remove();
+});
+$("body").on('click', '#removeAlert', function () {
+    $(this).closest('div.alert').remove();
 });
 $("#includecidr").change(function () {
     $("#cidr").prop("disabled", !$(this).prop('checked'))
@@ -18,7 +21,7 @@ function query() {
     $("#dataoutput").children().each(function (index, child) { $(child).remove(); });
     var ip = $("#ipaddress").val();
     var includecidr = $("#includecidr").prop("checked");
-    var cidr = includecidr ? $("#cidr").val() : 0;
+    var cidr = includecidr ? $("#cidr").val() : 420;
     var divide_as_hosts;
     if ($("#divide_as_hosts").prop('checked')) {
         divide_as_hosts = 1;
@@ -50,9 +53,8 @@ function query() {
                 addErrorCard("Sieć główna", "Błąd", data.error);
                 return;
             }
-            else if (includecidr) {
-                addNetworkCard("Sieć główna", data.main_network.initial_ip_address, data.main_network, color = "primary");
-            }
+            addNetworkCard("Sieć główna", data.main_network.initial_ip_address, data.main_network, color = "primary");
+            
             var i = 1;
             data.subnets.forEach(subnet => {
                 var suffix = divide_as_hosts ? 'hostów' : 'adresów';
@@ -77,7 +79,7 @@ function query() {
     xhttp.send();
 }
 function addAlert(message, bold = "") {
-    $("#datasubmittion").before(`<div class="col-12 col-md-10 alert alert-warning alert-dismissible fade show mx-auto" role="alert"> <span class="alert-message"><b>${bold}</b>&nbsp;${message}</span> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>`);
+    $("#datasubmittion").before(`<div class="col-12 col-md-10 alert alert-warning alert-dismissible fade show mx-auto" role="alert"> <span class="alert-message"><b>${bold}</b>&nbsp;${message}</span> <button type="button" class="close" id="removeAlert" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>`);
 }
 function addNetworkCard(header, title, data, color = "secondary") {
     binarykeys = ['network_address_bin', 'subnet_mask_bin', 'broadcast_address_bin', 'first_host_address_bin', 'last_host_address_bin'];

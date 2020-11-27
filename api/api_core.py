@@ -27,11 +27,12 @@ class Divider:
         data['addresses_count'] = network.size()      
         return data, network
 
+
     @staticmethod
     def __determineCidr(subnets:list, divide_as_hosts:bool):
         additional_addresses = len(subnets) * 2 if divide_as_hosts else 0
-        exponented = [2 ** Divider.__getClosestPowerOfTwo(x + additional_addresses, divide_as_hosts) for x in sorted(subnets, reverse=True)]
-        return 32 - Divider.__getClosestPowerOfTwo(sum(exponented), divide_as_hosts) 
+        exponentiated = [2 ** Divider.__getClosestPowerOfTwo(x + additional_addresses, divide_as_hosts) for x in sorted(subnets, reverse=True)]
+        return 32 - Divider.__getClosestPowerOfTwo(sum(exponentiated), divide_as_hosts) 
 
     @staticmethod
     def divide(ip: str, cidr:int, subnets: list, divide_as_hosts: bool):
@@ -40,6 +41,7 @@ class Divider:
             if not re.search("^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$", ip):
                 raise ValueError('Nieprawidłowy adres IP')
             if cidr == 420:
+                print(cidr)
                 cidr = Divider.__determineCidr(subnets, divide_as_hosts)
             main_network_parameters, main_network = Divider.__listNetworkParameters(ip,cidr)
             x['main_network'] = main_network_parameters
