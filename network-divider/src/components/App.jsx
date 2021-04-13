@@ -1,11 +1,10 @@
-import './App.css';
-import Form from './Form';
+import FormContainer from './FormContainer';
 import { Container, Row } from 'react-bootstrap';
 function App() {
   return (
     <Container>
       <Row>
-        <Form/>
+        <FormContainer />
       </Row>
     </Container>
   );
