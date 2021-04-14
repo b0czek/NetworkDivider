@@ -13,37 +13,85 @@ class InputForm extends Component {
         super();
         this.subnetStartingId = 1;
         this.state = {
-            subnets: [this.subnetStartingId],
-            lastSubnetId: this.subnetStartingId
+            subnets: [this.createNewSubnet(this.subnetStartingId)],
+            lastSubnetId: this.subnetStartingId,
+            ipAddress: "",
+            cidr: "24",
+            includeCidr: true
         };
 
     }
 
-    deleteSubnet(id) {
+    handleDeleteSubnet = (name) => {
         if(this.state.subnets.length !== 1) {
-            this.setState(prevState => ({
-                subnets: prevState.subnets.filter(subnet => subnet !== id )
-            }));
+            this.setState({
+                subnets: this.state.subnets.filter(subnet => subnet.name !== name )
+            });
         }
-    }
+    };
 
-    addSubnet() {
-        this.setState(prevState => ({
-            subnets: [...prevState.subnets, prevState.lastSubnetId + 1],
-            lastSubnetId: prevState.lastSubnetId + 1
-        }));
-    }
+    createNewSubnet = (id) => { return {
+            name: `subnet${id}`,
+            value: ""
+        };
+    };
+
+    handleAddSubnet = () =>  {
+        let newId = this.state.lastSubnetId + 1;
+        this.setState({
+            subnets: [...this.state.subnets, this.createNewSubnet(newId) ],
+            lastSubnetId: newId
+        });
+    };
+
+    handleSubnetChange = (event) => {
+        console.log();
+        this.setState({
+            subnets: this.state.subnets.map(subnet => 
+                subnet.name === event.target.name
+                ? {
+                    name: event.target.name,
+                    value: event.target.value
+                } 
+                : subnet)
+        });
+    };
+
+    handleChange = (event) => {
+        let target = event.target;
+        this.setState({
+            [target.name]: target.type === "checkbox" ?  target.checked : target.value
+        });
+    };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state);
+    };
 
     render(){
     return (
-        <Form>
-            <IPBar />
+        <Form onSubmit={this.handleSubmit} >
+            <IPBar 
+            values={{
+                ipAddress: this.state.ipAddress,
+                cidr: this.state.cidr,
+                includeCidr: this.state.includeCidr
+            }}
+            handleChange={this.handleChange}
+            />
             <DividingMethod />
             <div className="col-8 col-md-6 mx-auto mb-3">
-                { this.state.subnets.map((value, _) => 
-                    <SubnetFormField id={value} key={"subnet"+value} onDelete={() => this.deleteSubnet(value)} />
+                { this.state.subnets.map((value, idx) => 
+                    <SubnetFormField 
+                        name={value.name}
+                        key={idx}
+                        handleChange={this.handleSubnetChange}
+                        value={value.value}
+                        onDelete={() => this.handleDeleteSubnet(value.name)} 
+                        />
                 ) }
-                <SubnetFormFieldAdd onClick={ () => this.addSubnet() } />
+                <SubnetFormFieldAdd onClick={ this.handleAddSubnet } />
             </div>
             <SubmitButton />
         </Form>
