@@ -1,20 +1,29 @@
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 const SubnetFormField = (props) => {
     return (
-        <InputGroup className="mt-2">
-            <FormControl
-                type="number"
-                value={props.value}
-                onChange={props.handleChange}
-                name={props.name}
-                min="1"
-            />
-            <InputGroup.Append>
-                <Button variant="outline-danger" onClick={props.onDelete}>
-                    -
-                </Button>
-            </InputGroup.Append>
-        </InputGroup>
+        <div>
+            <InputGroup className="mt-2">
+                <FormControl
+                    type="number"
+                    value={props.value}
+                    onChange={props.handleChange}
+                    name={props.name}
+                    min="1"
+                />
+                <InputGroup.Append>
+                    <Button variant="outline-danger" onClick={props.onDelete}>
+                        -
+                    </Button>
+                </InputGroup.Append>
+            </InputGroup>
+            {props.errorMessage ? (
+                <div
+                    className="text-danger"
+                    style={{ fontSize: "0.75rem", marginLeft: "5px" }}>
+                    {props.errorMessage}
+                </div>
+            ) : null}
+        </div>
     );
 };
 

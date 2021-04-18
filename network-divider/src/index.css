@@ -1,13 +1,53 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+.bin-host-part {
+    color: rgb(50, 205, 50);
+}
+
+.network-address {
+    color: rgb(255, 166, 0);
+}
+
+.subnet-mask {
+    color: rgb(250, 29, 29);
+}
+
+.first-host {
+    color: #c819c8;
+}
+.last-host {
+    color: rgb(138, 40, 230);
+}
+
+.addresses-count {
+    color: deeppink;
+}
+
+.shrink-to-fit {
+    display: inline;
+}
+.thicken-border,
+.thicken-border > * {
+    border-width: 2px !important;
+}
+.thick-border {
+    border: 2px solid #dee2e6 !important;
+}
+.form-control-danger {
+    border-color: #dc3545 !important;
+}
+.form-control-danger:focus {
+    box-shadow: 0 0 0 0.2rem rgb(200 20 30 / 25%) !important;
 }

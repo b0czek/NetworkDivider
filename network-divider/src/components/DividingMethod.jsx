@@ -1,12 +1,9 @@
 import { InputGroup, ButtonGroup, ToggleButton } from "react-bootstrap";
-import { useState } from "react";
 
-const DividingMethod = () => {
-    const [radioValue, setRadioValue] = useState("1");
-
+const DividingMethod = (props) => {
     const radios = [
-        { name: "Adresy", value: "1" },
-        { name: "Hosty", value: "2" },
+        { name: "Adresy", value: "0" },
+        { name: "Hosty", value: "1" },
     ];
 
     return (
@@ -23,9 +20,8 @@ const DividingMethod = () => {
                             variant="primary"
                             name="dividingMethod"
                             value={radio.value}
-                            checked={radioValue === radio.value}
-                            onChange={(e) => setRadioValue(e.currentTarget.value)}
-                        >
+                            checked={props.value === radio.value}
+                            onChange={props.onChange}>
                             {radio.name}
                         </ToggleButton>
                     ))}
