@@ -31,6 +31,7 @@ const IPBar = (props) => {
                 name="cidr"
                 value={props.values.cidr}
                 onChange={props.handleChange}
+                disabled={!props.values.includeCidr}
             />
         </InputGroup>
     );
