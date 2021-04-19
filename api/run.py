@@ -1,8 +1,9 @@
 from flask import Flask,request,abort
+from flask_cors import CORS
 import json
 from api_core import Divider
 app = Flask(__name__)
-
+CORS(app)
 @app.route("/api/divide/network/<network>/cidr/<int:cidr>/divide_as_hosts/<int:divide_as_hosts>/subnets/<path:subnets>", methods=['GET'])
 def divide(network, cidr, divide_as_hosts, subnets):
     try:
@@ -15,4 +16,4 @@ def divide(network, cidr, divide_as_hosts, subnets):
 
 @app.errorhandler(404)
 def not_found(e):
-	return 'oj byczku tu nie ma api'
+	return 'invalid request'

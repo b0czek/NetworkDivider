@@ -1,3 +1,4 @@
 ipcalc
 six
 Flask
+flask-cors
