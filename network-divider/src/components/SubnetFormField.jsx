@@ -8,7 +8,7 @@ const SubnetFormField = (props) => {
                     value={props.value}
                     onChange={props.handleChange}
                     name={props.name}
-                    min="1"
+                    min="0"
                 />
                 <InputGroup.Append>
                     <Button variant="outline-danger" onClick={props.onDelete}>

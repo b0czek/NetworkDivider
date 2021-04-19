@@ -90,10 +90,15 @@ class InputForm extends Component {
                     +this.state.cidr > 32 ||
                     +this.state.cidr <= 0),
             subnets: this.state.subnets.map((subnet) => {
-                if (subnet.value) {
+                console.log(subnet);
+                /* eslint eqeqeq: 0 */
+                if (subnet.value != 0) {
                     subnet.errorMessage = "";
                 } else {
-                    subnet.errorMessage = "Pole nie może być puste";
+                    subnet.errorMessage =
+                        subnet.value === "0"
+                            ? "NO ALE TO JAAK"
+                            : "Pole nie może być puste";
                     allValid = false;
                 }
                 return subnet;
