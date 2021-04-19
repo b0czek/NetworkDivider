@@ -13,10 +13,23 @@ const Card = (props) => (
 );
 
 class Result extends React.Component {
-    createSubnetTitle = (initialAddressesCount, dividingMethod) =>
-        `${initialAddressesCount} ${
-            dividingMethod === "hosts" ? "hostów" : "adresów"
-        }`;
+    createSubnetTitle = (initialAddressesCount, dividingMethod) => {
+        let suffix;
+        if (initialAddressesCount === 1) {
+            suffix = "";
+        } else if (
+            Math.floor((initialAddressesCount / 10) % 10) !== 1 &&
+            initialAddressesCount % 10 > 1 &&
+            initialAddressesCount % 10 <= 4
+        ) {
+            suffix = "y";
+        } else {
+            suffix = "ów";
+        }
+        return `${initialAddressesCount} ${
+            dividingMethod === "hosts" ? "host" : "adres"
+        }${suffix}`;
+    };
 
     componentDidMount() {
         scroller.scrollTo("result", {
