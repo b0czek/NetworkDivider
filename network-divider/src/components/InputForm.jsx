@@ -118,9 +118,9 @@ class InputForm extends Component {
             .join("/");
 
         const response = await fetch(
-            `http://localhost:8080/api/divide/network/${
-                this.state.ipAddress
-            }/cidr/${
+            `${window.location.protocol}://${
+                window.location.hostname
+            }/api/divide/network/${this.state.ipAddress}/cidr/${
                 this.state.includeCidr ? this.state.cidr : 420
             }/divide_as_hosts/${this.state.dividingMethod}/subnets/${subnets}`
         );
