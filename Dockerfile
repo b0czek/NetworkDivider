@@ -16,4 +16,4 @@ RUN chown -R nginx:nginx /www
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 EXPOSE 80
-ENTRYPOINT ["/usr/bin/supervisord"]
+ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
