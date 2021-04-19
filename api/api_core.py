@@ -72,10 +72,10 @@ class Divider:
                 else:
                     params['error'] = None
                     operating_subnet_address = subnetwork.broadcast() + 1
-                params['initial_addresses_count'] = subnet+2 if divide_as_hosts else subnet
+                params['initial_addresses_count'] = subnet
                 x['subnets'].append(params)
 
             except ValueError as e:
-                x['subnets'].append(dict(initial_addresses_count=subnet+2 if divide_as_hosts else subnet, error=str(e)))
+                x['subnets'].append(dict(initial_addresses_count=subnet, error=str(e)))
                 return x
         return x

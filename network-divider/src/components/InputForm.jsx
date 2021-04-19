@@ -109,7 +109,6 @@ class InputForm extends Component {
         event.preventDefault();
         this.props.onSubmit();
         if (!(await this.validateForm())) {
-            console.log("form invalid");
             return;
         }
 
@@ -118,9 +117,9 @@ class InputForm extends Component {
             .join("/");
 
         const response = await fetch(
-            `${window.location.protocol}://${
-                window.location.hostname
-            }/api/divide/network/${this.state.ipAddress}/cidr/${
+            `${window.location.href}/api/divide/network/${
+                this.state.ipAddress
+            }/cidr/${
                 this.state.includeCidr ? this.state.cidr : 420
             }/divide_as_hosts/${this.state.dividingMethod}/subnets/${subnets}`
         );
