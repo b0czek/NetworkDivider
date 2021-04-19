@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 
 ADD api .
 ADD etc /etc
-ADD front /www
+ADD network-divider/build /www
 
 RUN chown -R nginx:nginx /www
 
